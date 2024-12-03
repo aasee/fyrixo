@@ -15,7 +15,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <img src="/fyrixo-logo.png" alt="Fyrixo" className="h-8 w-auto" />
+              <img src={import.meta.env.BASE_URL + 'fyrixo-logo.png'} alt="Fyrixo" className="h-8 w-auto" />
               <span className="text-2xl font-bold bg-gradient-to-r from-rose-500 to-purple-500 bg-clip-text text-transparent">
                 Fyrixo
               </span>
@@ -114,7 +114,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2">
-              <img src="/fyrixo-logo.png" alt="Fyrixo Logo" className="h-16 w-auto" />
+              <img src={import.meta.env.BASE_URL + 'fyrixo-logo.png'} alt="Fyrixo Logo" className="h-16 w-auto" />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
                   Fyrixo
