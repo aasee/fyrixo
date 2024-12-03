@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#be185d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#312e81;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g fill="none" stroke="url(#grad)" filter="url(#glow)">
+    <!-- Central Integration Hub -->
+    <circle cx="200" cy="150" r="40" stroke-width="3"/>
+    <path d="M170 150h60M200 120v60" stroke-width="2"/>
+    <circle cx="200" cy="150" r="30" stroke-width="1" stroke-dasharray="4,4"/>
+    
+    <!-- Data Sources -->
+    <g stroke-width="2">
+      <!-- Database -->
+      <path d="M80 90c0-10 40-10 40 0v30c0 10-40 10-40 0z"/>
+      <path d="M80 90c0 10 40 10 40 0" stroke-width="1"/>
+      <path d="M80 100c0 10 40 10 40 0" stroke-width="1"/>
+      
+      <!-- Cloud Storage -->
+      <path d="M290 80c0-10 15-20 30-20s30 10 30 20s-15 20-30 20s-30-10-30-20z"/>
+      <path d="M305 70h30M305 80h30M305 90h30" stroke-width="1"/>
+      
+      <!-- File System -->
+      <rect x="70" y="190" width="50" height="40" rx="4"/>
+      <path d="M80 200h30M80 210h30M80 220h30" stroke-width="1"/>
+      
+      <!-- API -->
+      <rect x="290" y="190" width="50" height="40" rx="4"/>
+      <path d="M295 205l10-10 10 10 10-10" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Connection Lines -->
+    <g stroke-width="1.5" stroke-dasharray="4,4">
+      <path d="M120 105l40 25"/>
+      <path d="M290 90l-40 40"/>
+      <path d="M120 210l40-40"/>
+      <path d="M290 210l-40-40"/>
+    </g>
+    
+    <!-- Integration Points -->
+    <g fill="url(#grad)">
+      <circle cx="170" cy="135" r="4"/>
+      <circle cx="230" cy="135" r="4"/>
+      <circle cx="170" cy="165" r="4"/>
+      <circle cx="230" cy="165" r="4"/>
+    </g>
+    
+    <!-- Data Flow Animation -->
+    <g fill="url(#grad)">
+      <circle cx="160" cy="130" r="2">
+        <animate attributeName="cx" from="120" to="190" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="cy" from="105" to="145" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="240" cy="130" r="2">
+        <animate attributeName="cx" from="290" to="210" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="cy" from="90" to="145" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <!-- Labels -->
+    <g stroke-width="1" opacity="0.8">
+      <path d="M185 140h30M185 160h30"/>
+      <path d="M190 135v30M210 135v30"/>
+    </g>
+  </g>
+</svg>
