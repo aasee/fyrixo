@@ -6,6 +6,7 @@ import Mission from './components/Mission';
 import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
+import CookieConsent from './components/CookieConsent';
 
 function App() {
   useEffect(() => {
@@ -47,8 +48,11 @@ function App() {
 
       {/* Footer */}
       <Footer />
+      
+      {/* Cookie Consent Banner */}
+      <CookieConsent />
     </div>
   );
-};
+}
 
 export default App;
