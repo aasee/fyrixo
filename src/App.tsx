@@ -7,6 +7,9 @@ import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
+import ScrollToTop from './components/ScrollToTop';
+import SocialMediaBar from './components/SocialMediaBar';
+import { ToastProvider } from './contexts/ToastContext';
 
 function App() {
   useEffect(() => {
@@ -33,25 +36,29 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <Header />
-      
-      {/* Main Content */}
-      <main className="pt-20"> {/* Added padding-top to account for fixed header */}
-        <Hero />
-        <Features />
-        <Mission />
-        <Testimonials />
-        <Contact />
-      </main>
+    <ToastProvider>
+      <div className="min-h-screen bg-white">
+        {/* Header */}
+        <Header />
+        
+        {/* Main Content */}
+        <main className="pt-20"> {/* Added padding-top to account for fixed header */}
+          <Hero />
+          <Features />
+          <Mission />
+          <Testimonials />
+          <Contact />
+        </main>
 
-      {/* Footer */}
-      <Footer />
-      
-      {/* Cookie Consent Banner */}
-      <CookieConsent />
-    </div>
+        {/* Footer */}
+        <Footer />
+        
+        {/* Floating Components */}
+        <CookieConsent />
+        <ScrollToTop />
+        <SocialMediaBar />
+      </div>
+    </ToastProvider>
   );
 }
 

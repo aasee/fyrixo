@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Send, Mail, User, MessageSquare } from 'lucide-react';
 import AnimateOnScroll from './AnimateOnScroll';
+import { useToast } from '../contexts/ToastContext';
+import LoadingSpinner from './LoadingSpinner';
 
 const Contact = () => {
+  const { showToast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -11,10 +15,22 @@ const Contact = () => {
 
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formState);
+    setIsSubmitting(true);
+
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Reset form
+      setFormState({ name: '', email: '', message: '' });
+      showToast('Message sent successfully!', 'success');
+    } catch (error) {
+      showToast('Failed to send message. Please try again.', 'error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -68,6 +84,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('name')}
                     onBlur={() => setFocusedField(null)}
                     className="w-full px-12 py-4 bg-white/50 backdrop-blur rounded-xl border-2 border-gray-100 focus:border-rose-700/50 outline-none transition-all"
+                    required
                   />
                 </div>
               </AnimateOnScroll>
@@ -84,6 +101,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('email')}
                     onBlur={() => setFocusedField(null)}
                     className="w-full px-12 py-4 bg-white/50 backdrop-blur rounded-xl border-2 border-gray-100 focus:border-rose-700/50 outline-none transition-all"
+                    required
                   />
                 </div>
               </AnimateOnScroll>
@@ -98,8 +116,8 @@ const Contact = () => {
                     onChange={handleInputChange}
                     onFocus={() => setFocusedField('message')}
                     onBlur={() => setFocusedField(null)}
-                    rows={5}
-                    className="w-full px-12 py-4 bg-white/50 backdrop-blur rounded-xl border-2 border-gray-100 focus:border-rose-700/50 outline-none transition-all resize-none"
+                    className="w-full px-12 py-4 bg-white/50 backdrop-blur rounded-xl border-2 border-gray-100 focus:border-rose-700/50 outline-none transition-all min-h-[150px] resize-none"
+                    required
                   />
                 </div>
               </AnimateOnScroll>
@@ -107,11 +125,20 @@ const Contact = () => {
               <AnimateOnScroll delay={0.6}>
                 <button
                   type="submit"
-                  className="group w-full py-4 px-8 bg-gradient-to-r from-rose-700 to-purple-900 text-white rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2 relative overflow-hidden"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-4 bg-gradient-to-r from-rose-700 to-purple-900 text-white rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                 >
-                  <span className="relative z-10">Send Message</span>
-                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-900 to-rose-700 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {isSubmitting ? (
+                    <>
+                      <LoadingSpinner size="sm" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </AnimateOnScroll>
             </form>
