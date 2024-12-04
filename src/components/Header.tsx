@@ -22,7 +22,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <img src={import.meta.env.BASE_URL + 'fyrixo-logo.png'} alt="Fyrixo Logo" className="h-16 w-auto" />
+            <img src={import.meta.env.BASE_URL + 'logo.png'} alt="Fyrixo Logo" className="h-16 w-auto" />
             <div className="flex flex-col">
               <span className="text-2xl font-bold bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
                 Fyrixo
