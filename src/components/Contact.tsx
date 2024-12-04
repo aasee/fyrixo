@@ -20,14 +20,27 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Reset form
-      setFormState({ name: '', email: '', message: '' });
-      showToast('Message sent successfully!', 'success');
+      const response = await fetch('https://formspree.io/f/mqaknyzk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message
+        })
+      });
+
+      if (response.ok) {
+        setFormState({ name: '', email: '', message: '' });
+        showToast('Message sent successfully!', 'success');
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
       showToast('Failed to send message. Please try again.', 'error');
+      console.error('Form error:', error);
     } finally {
       setIsSubmitting(false);
     }
