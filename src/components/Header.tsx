@@ -27,7 +27,7 @@ const Header = () => {
               <span className="text-2xl font-bold bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
                 Fyrixo
               </span>
-              <span className="text-sm text-gray-600">Smart and Seamless</span>
+              <span className="text-sm text-[#3B95B0]">Smart and Seamless</span>
             </div>
           </div>
 
@@ -35,31 +35,31 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <a
               href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-[#3B95B0] hover:text-[#9E0059] transition-colors"
             >
               Home
             </a>
             <a
               href="#features"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-[#3B95B0] hover:text-[#9E0059] transition-colors"
             >
               Features
             </a>
             <a
               href="#mission"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-[#3B95B0] hover:text-[#9E0059] transition-colors"
             >
               Mission
             </a>
             <a
               href="#testimonials"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-[#3B95B0] hover:text-[#9E0059] transition-colors"
             >
               Testimonials
             </a>
             <a
               href="#contact"
-              className="px-6 py-2 bg-gradient-to-r from-rose-700 to-purple-900 text-white rounded-lg hover:opacity-90 transition-all"
+              className="px-6 py-2 bg-gradient-to-r from-[#9E0059] to-[#3B95B0] text-white rounded-lg hover:opacity-90 transition-all"
             >
               Contact Us
             </a>
@@ -71,9 +71,9 @@ const Header = () => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-gray-600" />
+              <X className="w-6 h-6 text-[#3B95B0]" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-600" />
+              <Menu className="w-6 h-6 text-[#3B95B0]" />
             )}
           </button>
         </div>
@@ -84,35 +84,35 @@ const Header = () => {
             <nav className="flex flex-col space-y-4">
               <a
                 href="#"
-                className="text-gray-600 hover:text-gray-900 transition-colors px-2 py-1"
+                className="text-[#3B95B0] hover:text-[#9E0059] transition-colors px-2 py-1"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </a>
               <a
                 href="#features"
-                className="text-gray-600 hover:text-gray-900 transition-colors px-2 py-1"
+                className="text-[#3B95B0] hover:text-[#9E0059] transition-colors px-2 py-1"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Features
               </a>
               <a
                 href="#mission"
-                className="text-gray-600 hover:text-gray-900 transition-colors px-2 py-1"
+                className="text-[#3B95B0] hover:text-[#9E0059] transition-colors px-2 py-1"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Mission
               </a>
               <a
                 href="#testimonials"
-                className="text-gray-600 hover:text-gray-900 transition-colors px-2 py-1"
+                className="text-[#3B95B0] hover:text-[#9E0059] transition-colors px-2 py-1"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Testimonials
               </a>
               <a
                 href="#contact"
-                className="inline-block px-6 py-2 bg-gradient-to-r from-rose-700 to-purple-900 text-white rounded-lg hover:opacity-90 transition-all"
+                className="inline-block px-6 py-2 bg-gradient-to-r from-[#9E0059] to-[#3B95B0] text-white rounded-lg hover:opacity-90 transition-all"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact Us

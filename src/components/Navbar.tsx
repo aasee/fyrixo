@@ -15,7 +15,7 @@ const Navbar = () => {
               <span className="text-2xl font-bold bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
                 Fyrixo
               </span>
-              <span className="text-sm text-gray-600 font-medium -mt-1">
+              <span className="text-sm text-[#3B95B0] font-medium -mt-1">
                 Smart and Seamless
               </span>
             </div>
