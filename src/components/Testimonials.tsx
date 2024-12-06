@@ -39,24 +39,22 @@ const TestimonialCard = ({ name, role, company, content }: {
   </AnimateOnScroll>
 );
 
+type Testimonial = {
+  name?: string;
+  role?: string;
+  company?: string;
+  content?: string;
+};
+
 const Testimonials = () => {
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
-      // name: "Sarah Johnson",
-      // role: "CTO",
-      // company: "TechCorp Solutions",
       content: "Fyrixo's AI solutions have transformed how we process and analyze data. The real-time insights have been invaluable for our decision-making process."
     },
     {
-      // name: "Michael Chen",
-      // role: "Operations Director",
-      // company: "Smart Manufacturing Inc.",
       content: "The IoT integration capabilities are exceptional. We've seen a 40% improvement in operational efficiency since implementing Fyrixo's solutions."
     },
     {
-      // name: "Emma Davis",
-      // role: "Innovation Lead",
-      // company: "Future Systems",
       content: "The level of support and expertise from the Fyrixo team is outstanding. They've been instrumental in our digital transformation journey."
     }
   ];
