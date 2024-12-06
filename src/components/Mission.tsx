@@ -1,30 +1,64 @@
 import React from 'react';
 import AnimateOnView from './AnimateOnView';
-import { Target, Zap, Globe, Circle } from 'lucide-react';
+import { Circle } from 'lucide-react';
+import template from '../templates/AppTemplate.json';
+import { getIconByName } from '../templates/templateUtils';
 
-const MissionCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => (
-  <AnimateOnView className="relative">
-    <div className="relative bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 h-full group hover:scale-[1.02] transition-all">
-      {/* Decorative Elements */}
-      <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-rose-500/10 to-purple-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-      <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-rose-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-      
-      <div className="relative space-y-4">
-        <div className="w-14 h-14 bg-gradient-to-br from-rose-700/10 to-purple-900/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <Icon className="w-7 h-7 text-rose-700 group-hover:text-purple-900 transition-colors" />
+const iconMap = {
+  // Add your icon names here
+};
+
+type IconName = 
+  | "Brain" 
+  | "Network" 
+  | "Database" 
+  | "Lock" 
+  | "BarChart" 
+  | "Zap" 
+  | "Factory" 
+  | "Cloud" 
+  | "LineChart" 
+  | "Bell" 
+  | "Cpu" 
+  | "Building2" 
+  | "WrenchIcon" 
+  | "Signal" 
+  | "Truck" 
+  | "ClipboardCheck" 
+  | "MapPin"; 
+
+interface MissionCardProps {
+  iconName: IconName;
+  title: string;
+  description: string;
+}
+
+const MissionCard = ({ iconName, title, description }: MissionCardProps) => {
+  const Icon = getIconByName(iconName);
+  return Icon ? (
+    <AnimateOnView className="relative">
+      <div className="relative bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 h-full group hover:scale-[1.02] transition-all">
+        {/* Decorative Elements */}
+        <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-rose-500/10 to-purple-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-rose-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+        
+        <div className="relative space-y-4">
+          <div className="w-14 h-14 bg-gradient-to-br from-rose-700/10 to-purple-900/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+            <Icon className="w-7 h-7 text-rose-700 group-hover:text-purple-900 transition-colors" />
+          </div>
+          
+          <h3 className="text-2xl font-bold bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
+            {title}
+          </h3>
+          
+          <p className="text-gray-600 leading-relaxed">
+            {description}
+          </p>
         </div>
-        
-        <h3 className="text-2xl font-bold bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
-          {title}
-        </h3>
-        
-        <p className="text-gray-600 leading-relaxed">
-          {description}
-        </p>
       </div>
-    </div>
-  </AnimateOnView>
-);
+    </AnimateOnView>
+  ) : null;
+};
 
 const TimelineItem = ({ year, description }: { year: string, description: string }) => (
   <AnimateOnView className="relative flex-1">
@@ -48,43 +82,6 @@ const TimelineItem = ({ year, description }: { year: string, description: string
 );
 
 const Mission = () => {
-  const missions = [
-    {
-      icon: Target,
-      title: "Our Mission",
-      description: "To empower industries with transformative IoT, AI, and ML technologies, driving innovation, sustainability, and operational excellence in the evolving digital landscape."
-    },
-    {
-      icon: Zap,
-      title: "Our Vision",
-      description: "To lead the industrial transformation journey by delivering intelligent, data-driven solutions that redefine business models and enhance global operational efficiency."
-    },
-    {
-      icon: Globe,
-      title: "Our Impact",
-      description: "Creating meaningful industrial impact by combining smart automation, predictive intelligence, and seamless IoT-AI integration to enhance productivity and profitability."
-    }
-  ];
-
-  const timeline = [
-    {
-      year: "2019",
-      description: "IoT platform - providing robust support for connected devices and solutions."
-    },
-    {
-      year: "2022",
-      description: "AI/ML Integration - Integrated AI and Machine Learning to revolutionize data analytics, enabling real-time insights and predictive solutions for industries."
-    },
-    {
-      year: "2023",
-      description: "Generative AI - Leveraged Generative AI to redefine industrial innovation, enabling smarter automation and enhanced operational efficiencies."
-    },
-    {
-      year: "2024",
-      description: "Cutting-Edge Platform - Stepping into the next-generation platform uniting IoT, AI, and ML for a holistic approach to industrial management, driving smarter, more connected solutions."
-    }
-  ];
-
   return (
     <section className="relative py-20 overflow-hidden" id="mission">
       {/* Background Elements */}
@@ -98,11 +95,11 @@ const Mission = () => {
         <AnimateOnView className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl font-bold mb-6">
             <span className="bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
-              Driving Innovation Forward
+              {template.mission.header.title}
             </span>
           </h2>
           <p className="text-xl text-gray-600">
-            We're on a mission to revolutionize how businesses operate in the digital era
+            {template.mission.header.description}
           </p>
         </AnimateOnView>
 
@@ -112,7 +109,7 @@ const Mission = () => {
           <div className="absolute left-0 right-0 top-0 h-0.5 bg-gradient-to-r from-rose-700/20 via-purple-900/20 to-rose-700/20" />
           
           <div className="flex gap-8">
-            {timeline.map((item, index) => (
+            {template.mission.timeline.map((item, index) => (
               <TimelineItem
                 key={index}
                 year={item.year}
@@ -124,12 +121,12 @@ const Mission = () => {
 
         {/* Mission Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {missions.map((mission, index) => (
+          {template.mission.cards.map((card: MissionCardProps, index) => (
             <MissionCard
               key={index}
-              icon={mission.icon}
-              title={mission.title}
-              description={mission.description}
+              iconName={card.iconName}
+              title={card.title}
+              description={card.description}
             />
           ))}
         </div>

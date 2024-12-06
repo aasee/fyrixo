@@ -1,8 +1,12 @@
 import React from 'react';
 import AnimateOnView from './AnimateOnView';
 import { ArrowRight, ChevronRight } from 'lucide-react';
+import templateData from '../templates/AppTemplate.json';
+import { HeroContent } from '../templates/templateUtils';
 
 const Hero = () => {
+  const content = templateData.hero as HeroContent;
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Elements */}
@@ -22,10 +26,10 @@ const Hero = () => {
             <AnimateOnView className="inline-block">
               <div className="inline-flex items-center px-4 py-2 bg-white/50 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm">
                 <span className="text-2xl font-bold bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
-                  Fyrixo
+                  {content.company.name}
                 </span>
                 <ChevronRight className="w-5 h-5 mx-2 text-gray-400" />
-                <span className="text-gray-600">Smart and Seamless</span>
+                <span className="text-gray-600">{content.company.tagline}</span>
               </div>
             </AnimateOnView>
 
@@ -33,35 +37,35 @@ const Hero = () => {
             <AnimateOnView delay={0.1} className="space-y-6">
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                 <span className="bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
-                  Revolutionize Industrial Operations
+                  {content.mainHeading.highlight}
                 </span>
                 <br />
                 <span className="text-gray-800">
-                  with Intelligent IoT and AI Solutions
+                  {content.mainHeading.subtext}
                 </span>
               </h1>
               
               <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Leverage our state-of-the-art IoT platform to unify your industrial data streams into a single, real-time dashboard. Empower your decision-making with predictive insights and automation powered by advanced AI and Machine Learning, tailored for industrial efficiency.
+                {content.description}
               </p>
             </AnimateOnView>
 
             {/* CTA Buttons */}
             <AnimateOnView delay={0.2} className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <a
-                href="#features"
+                href={content.buttons.primary.href}
                 className="group px-8 py-4 bg-gradient-to-r from-rose-700 to-purple-900 text-white rounded-xl hover:opacity-90 transition-all flex items-center gap-2 relative overflow-hidden shadow-lg hover:shadow-xl"
               >
-                <span className="relative z-10">Learn More</span>
+                <span className="relative z-10">{content.buttons.primary.text}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-900 to-rose-700 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
               
               <a
-                href="#contact"
+                href={content.buttons.secondary.href}
                 className="group px-8 py-4 bg-white/70 backdrop-blur text-gray-800 rounded-xl border-2 border-gray-100 hover:border-rose-700/50 transition-all flex items-center gap-2 shadow-lg hover:shadow-xl"
               >
-                Get in Touch
+                {content.buttons.secondary.text}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </AnimateOnView>
@@ -69,18 +73,12 @@ const Hero = () => {
             {/* Trust Indicators */}
             <AnimateOnView delay={0.3} className="pt-8">
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                  <span className="text-gray-600">Enterprise Ready</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-blue-500" />
-                  <span className="text-gray-600">24/7 Support</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-purple-500" />
-                  <span className="text-gray-600">99.9% Uptime</span>
-                </div>
+                {content.trustIndicators.map((indicator, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <div className={`w-3 h-3 rounded-full ${indicator.color}`} />
+                    <span className="text-gray-600">{indicator.text}</span>
+                  </div>
+                ))}
               </div>
             </AnimateOnView>
           </div>

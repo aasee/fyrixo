@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Send, Mail, User, MessageSquare } from 'lucide-react';
 import AnimateOnScroll from './AnimateOnScroll';
 import { useToast } from '../contexts/ToastContext';
 import LoadingSpinner from './LoadingSpinner';
+import template from '../templates/AppTemplate.json';
+import { getIconByName } from '../templates/templateUtils';
 
 const Contact = () => {
   const { showToast } = useToast();
@@ -20,26 +21,22 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://formspree.io/f/mqaknyzk', {
+      const response = await fetch(template.contact.api.formspreeEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          name: formState.name,
-          email: formState.email,
-          message: formState.message
-        })
+        body: JSON.stringify(formState)
       });
 
       if (response.ok) {
         setFormState({ name: '', email: '', message: '' });
-        showToast('Message sent successfully!', 'success');
+        showToast(template.contact.toast.success, 'success');
       } else {
         throw new Error('Failed to send message');
       }
     } catch (error) {
-      showToast('Failed to send message. Please try again.', 'error');
+      showToast(template.contact.toast.error, 'error');
       console.error('Form error:', error);
     } finally {
       setIsSubmitting(false);
@@ -51,6 +48,34 @@ const Contact = () => {
       ...prev,
       [e.target.name]: e.target.value
     }));
+  };
+
+  const renderField = (fieldName: 'name' | 'email' | 'message') => {
+    const field = template.contact.form.fields[fieldName];
+    const Icon = getIconByName(field.iconName);
+    const isTextArea = fieldName === 'message';
+    const InputComponent = isTextArea ? 'textarea' : 'input';
+
+    if (!Icon) return null;
+
+    return (
+      <AnimateOnScroll delay={0.3 + (['name', 'email', 'message'].indexOf(fieldName) * 0.1)} className="relative">
+        <div className={`relative transition-all duration-300 ${focusedField === fieldName ? 'scale-[1.02]' : ''}`}>
+          <Icon className={`absolute left-4 ${isTextArea ? 'top-6' : 'top-1/2 -translate-y-1/2'} w-5 h-5 transition-colors ${focusedField === fieldName ? 'text-rose-700' : 'text-gray-400'}`} />
+          <InputComponent
+            type={fieldName === 'email' ? 'email' : 'text'}
+            name={fieldName}
+            placeholder={field.placeholder}
+            value={formState[fieldName]}
+            onChange={handleInputChange}
+            onFocus={() => setFocusedField(fieldName)}
+            onBlur={() => setFocusedField(null)}
+            className={`w-full px-12 py-4 bg-white/50 backdrop-blur rounded-xl border-2 border-gray-100 focus:border-rose-700/50 outline-none transition-all ${isTextArea ? 'min-h-[150px] resize-none' : ''}`}
+            required
+          />
+        </div>
+      </AnimateOnScroll>
+    );
   };
 
   return (
@@ -66,11 +91,11 @@ const Contact = () => {
         <AnimateOnScroll className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl font-bold mb-6">
             <span className="bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
-              Get in Touch
+              {template.contact.header.title}
             </span>
           </h2>
           <p className="text-xl text-gray-600">
-            Ready to transform your business? Let's discuss how we can help.
+            {template.contact.header.description}
           </p>
         </AnimateOnScroll>
 
@@ -85,55 +110,9 @@ const Contact = () => {
             <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-rose-500/10 rounded-full blur-xl" />
 
             <form onSubmit={handleSubmit} className="relative space-y-6">
-              <AnimateOnScroll delay={0.3} className="relative">
-                <div className={`relative transition-all duration-300 ${focusedField === 'name' ? 'scale-[1.02]' : ''}`}>
-                  <User className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 transition-colors ${focusedField === 'name' ? 'text-rose-700' : 'text-gray-400'}`} />
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    value={formState.name}
-                    onChange={handleInputChange}
-                    onFocus={() => setFocusedField('name')}
-                    onBlur={() => setFocusedField(null)}
-                    className="w-full px-12 py-4 bg-white/50 backdrop-blur rounded-xl border-2 border-gray-100 focus:border-rose-700/50 outline-none transition-all"
-                    required
-                  />
-                </div>
-              </AnimateOnScroll>
-
-              <AnimateOnScroll delay={0.4} className="relative">
-                <div className={`relative transition-all duration-300 ${focusedField === 'email' ? 'scale-[1.02]' : ''}`}>
-                  <Mail className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 transition-colors ${focusedField === 'email' ? 'text-rose-700' : 'text-gray-400'}`} />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    value={formState.email}
-                    onChange={handleInputChange}
-                    onFocus={() => setFocusedField('email')}
-                    onBlur={() => setFocusedField(null)}
-                    className="w-full px-12 py-4 bg-white/50 backdrop-blur rounded-xl border-2 border-gray-100 focus:border-rose-700/50 outline-none transition-all"
-                    required
-                  />
-                </div>
-              </AnimateOnScroll>
-
-              <AnimateOnScroll delay={0.5} className="relative">
-                <div className={`relative transition-all duration-300 ${focusedField === 'message' ? 'scale-[1.02]' : ''}`}>
-                  <MessageSquare className={`absolute left-4 top-6 w-5 h-5 transition-colors ${focusedField === 'message' ? 'text-rose-700' : 'text-gray-400'}`} />
-                  <textarea
-                    name="message"
-                    placeholder="Your Message"
-                    value={formState.message}
-                    onChange={handleInputChange}
-                    onFocus={() => setFocusedField('message')}
-                    onBlur={() => setFocusedField(null)}
-                    className="w-full px-12 py-4 bg-white/50 backdrop-blur rounded-xl border-2 border-gray-100 focus:border-rose-700/50 outline-none transition-all min-h-[150px] resize-none"
-                    required
-                  />
-                </div>
-              </AnimateOnScroll>
+              {renderField('name')}
+              {renderField('email')}
+              {renderField('message')}
 
               <AnimateOnScroll delay={0.6}>
                 <button
@@ -144,12 +123,15 @@ const Contact = () => {
                   {isSubmitting ? (
                     <>
                       <LoadingSpinner size="sm" />
-                      <span>Sending...</span>
+                      <span>{template.contact.form.submitButton.loadingText}</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
-                      <span>Send Message</span>
+                      {(() => {
+                        const Icon = getIconByName(template.contact.form.submitButton.iconName);
+                        return Icon ? <Icon className="w-5 h-5" /> : null;
+                      })()}
+                      <span>{template.contact.form.submitButton.text}</span>
                     </>
                   )}
                 </button>

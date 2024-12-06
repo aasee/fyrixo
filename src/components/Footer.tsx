@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
+import template from '../templates/AppTemplate.json';
+import { getIconByName } from '../templates/templateUtils';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,97 +16,81 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <img src={import.meta.env.BASE_URL + 'logo.png'} alt="Fyrixo" className="h-8 w-auto" />
+              <img 
+                src={import.meta.env.BASE_URL + template.footer.company.logo.src} 
+                alt={template.footer.company.logo.alt} 
+                className="h-8 w-auto" 
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-rose-500 to-purple-500 bg-clip-text text-transparent">
-                Fyrixo
+                {template.footer.company.name}
               </span>
             </div>
             <p className="text-gray-400">
-              Transforming businesses with intelligent AI & IoT solutions.
+              {template.footer.company.description}
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
+              {Object.entries(template.footer.company.social).map(([platform, { url, iconName }]) => {
+                const Icon = getIconByName(iconName);
+                return (
+                  <a 
+                    key={platform}
+                    href={url} 
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-6">{template.footer.quickLinks.title}</h3>
             <ul className="space-y-4">
-              <li>
-                <a href="#features" className="text-gray-400 hover:text-white transition-colors">
-                  Features
-                </a>
-              </li>
-              <li>
-                <a href="#mission" className="text-gray-400 hover:text-white transition-colors">
-                  Our Mission
-                </a>
-              </li>
-              <li>
-                <a href="#testimonials" className="text-gray-400 hover:text-white transition-colors">
-                  Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-400 hover:text-white transition-colors">
-                  Contact
-                </a>
-              </li>
+              {template.footer.quickLinks.links.map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href={link.url} 
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Solutions */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Solutions</h3>
+            <h3 className="text-lg font-semibold mb-6">{template.footer.solutions.title}</h3>
             <ul className="space-y-4">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  AI Analytics
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  IoT Integration
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Data Processing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Security Solutions
-                </a>
-              </li>
+              {template.footer.solutions.links.map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href={link.url} 
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
+            <h3 className="text-lg font-semibold mb-6">{template.footer.contact.title}</h3>
             <ul className="space-y-4">
-              <li className="flex items-center space-x-3 text-gray-400">
-                <Mail className="w-5 h-5" />
-                <span>contact@fyrixo.com</span>
-              </li>
-              {/* <li className="flex items-center space-x-3 text-gray-400">
-                <Phone className="w-5 h-5" />
-                <span>+91-9999999999</span>
-              </li> */}
-              <li className="flex items-center space-x-3 text-gray-400">
-                <MapPin className="w-5 h-5" />
-                <span>Chennai, India</span>
-              </li>
+              {template.footer.contact.info.map((item, index) => {
+                const Icon = getIconByName(item.iconName);
+                return (
+                  <li key={index} className="flex items-center space-x-3 text-gray-400">
+                    <Icon className="w-5 h-5" />
+                    <span>{item.text}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -114,27 +99,31 @@ const Footer = () => {
         <div className="border-t border-gray-800 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2">
-              <img src={import.meta.env.BASE_URL + 'logo.png'} alt="Fyrixo Logo" className="h-16 w-auto" />
+              <img 
+                src={import.meta.env.BASE_URL + template.footer.company.logo.src} 
+                alt={template.footer.company.logo.alt} 
+                className="h-16 w-auto" 
+              />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
-                  Fyrixo
+                  {template.footer.company.name}
                 </span>
-                <span className="text-sm text-gray-600">Smart and Seamless</span>
+                <span className="text-sm text-gray-600">{template.footer.company.tagline}</span>
               </div>
             </div>
             <p className="text-gray-400 text-sm">
-              &copy; {currentYear} Fyrixo. All rights reserved.
+              &copy; {currentYear} {template.footer.company.name}. {template.footer.bottomBar.copyright}
             </p>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                Cookie Policy
-              </a>
+              {template.footer.bottomBar.links.map((link, index) => (
+                <a 
+                  key={index}
+                  href={link.url} 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {link.text}
+                </a>
+              ))}
             </div>
           </div>
         </div>
