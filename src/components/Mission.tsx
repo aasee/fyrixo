@@ -1,6 +1,6 @@
 import React from 'react';
 import AnimateOnView from './AnimateOnView';
-import { Target, Zap, Globe } from 'lucide-react';
+import { Target, Zap, Globe, Circle } from 'lucide-react';
 
 const MissionCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => (
   <AnimateOnView className="relative">
@@ -19,6 +19,27 @@ const MissionCard = ({ icon: Icon, title, description }: { icon: any, title: str
         </h3>
         
         <p className="text-gray-600 leading-relaxed">
+          {description}
+        </p>
+      </div>
+    </div>
+  </AnimateOnView>
+);
+
+const TimelineItem = ({ year, description }: { year: string, description: string }) => (
+  <AnimateOnView className="relative flex-1">
+    <div className="relative pt-6">
+      {/* Dot on the line */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[11px] w-6 h-6 bg-gradient-to-br from-rose-700 to-purple-900 rounded-full flex items-center justify-center">
+        <Circle className="w-3 h-3 text-white" />
+      </div>
+      
+      {/* Content */}
+      <div className="text-center">
+        <h4 className="text-xl font-bold text-purple-900 mb-2">
+          {year}
+        </h4>
+        <p className="text-gray-600 leading-relaxed text-sm">
           {description}
         </p>
       </div>
@@ -45,6 +66,25 @@ const Mission = () => {
     }
   ];
 
+  const timeline = [
+    {
+      year: "2019",
+      description: "IoT platform - providing robust support for connected devices and solutions."
+    },
+    {
+      year: "2022",
+      description: "Expanded capabilities by integrating advanced AI/ML-driven data analytics for deeper insights."
+    },
+    {
+      year: "2023",
+      description: "Pioneered the adoption of Generative AI solutions, revolutionizing data-driven innovation."
+    },
+    {
+      year: "2024",
+      description: "Developing a cutting-edge platform that seamlessly integrates IoT and AI technologies to shape the future of smart solutions."
+    }
+  ];
+
   return (
     <section className="relative py-20 overflow-hidden" id="mission">
       {/* Background Elements */}
@@ -66,6 +106,23 @@ const Mission = () => {
           </p>
         </AnimateOnView>
 
+        {/* Timeline */}
+        <div className="mb-20 relative">
+          {/* Horizontal Line */}
+          <div className="absolute left-0 right-0 top-0 h-0.5 bg-gradient-to-r from-rose-700/20 via-purple-900/20 to-rose-700/20" />
+          
+          <div className="flex gap-8">
+            {timeline.map((item, index) => (
+              <TimelineItem
+                key={index}
+                year={item.year}
+                description={item.description}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Mission Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {missions.map((mission, index) => (
             <MissionCard

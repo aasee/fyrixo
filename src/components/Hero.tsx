@@ -49,19 +49,19 @@ const Hero = () => {
             {/* CTA Buttons */}
             <AnimateOnView delay={0.2} className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <a
-                href="#contact"
+                href="#features"
                 className="group px-8 py-4 bg-gradient-to-r from-rose-700 to-purple-900 text-white rounded-xl hover:opacity-90 transition-all flex items-center gap-2 relative overflow-hidden shadow-lg hover:shadow-xl"
               >
-                <span className="relative z-10">Get Started</span>
+                <span className="relative z-10">Learn More</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-900 to-rose-700 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
               
               <a
-                href="#features"
+                href="#contact"
                 className="group px-8 py-4 bg-white/70 backdrop-blur text-gray-800 rounded-xl border-2 border-gray-100 hover:border-rose-700/50 transition-all flex items-center gap-2 shadow-lg hover:shadow-xl"
               >
-                Learn More
+                Get in Touch
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </AnimateOnView>

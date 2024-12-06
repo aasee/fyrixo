@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm' : 'bg-transparent'
+      isScrolled || isMobileMenuOpen ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-md'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -71,48 +71,48 @@ const Header = () => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-[#3B95B0]" />
+              <X className="w-6 h-6 text-[#9E0059]" />
             ) : (
-              <Menu className="w-6 h-6 text-[#3B95B0]" />
+              <Menu className="w-6 h-6 text-[#9E0059]" />
             )}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
-            <nav className="flex flex-col space-y-4">
+          <div className="md:hidden bg-white border-t border-gray-100">
+            <nav className="flex flex-col py-2">
               <a
                 href="#"
-                className="text-[#3B95B0] hover:text-[#9E0059] transition-colors px-2 py-1"
+                className="px-4 py-3 text-gray-800 hover:bg-rose-50 hover:text-[#9E0059] transition-all font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </a>
               <a
                 href="#features"
-                className="text-[#3B95B0] hover:text-[#9E0059] transition-colors px-2 py-1"
+                className="px-4 py-3 text-gray-800 hover:bg-rose-50 hover:text-[#9E0059] transition-all font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Features
               </a>
               <a
                 href="#mission"
-                className="text-[#3B95B0] hover:text-[#9E0059] transition-colors px-2 py-1"
+                className="px-4 py-3 text-gray-800 hover:bg-rose-50 hover:text-[#9E0059] transition-all font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Mission
               </a>
               <a
                 href="#testimonials"
-                className="text-[#3B95B0] hover:text-[#9E0059] transition-colors px-2 py-1"
+                className="px-4 py-3 text-gray-800 hover:bg-rose-50 hover:text-[#9E0059] transition-all font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Testimonials
               </a>
               <a
                 href="#contact"
-                className="inline-block px-6 py-2 bg-gradient-to-r from-[#9E0059] to-[#3B95B0] text-white rounded-lg hover:opacity-90 transition-all"
+                className="mx-4 my-2 px-4 py-3 text-white bg-gradient-to-r from-[#9E0059] to-[#3B95B0] rounded-lg hover:opacity-90 transition-all text-center font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact Us

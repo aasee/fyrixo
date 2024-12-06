@@ -56,7 +56,7 @@ function App() {
         {/* Floating Components */}
         <CookieConsent />
         <ScrollToTop />
-        <SocialMediaBar />
+        {/* <SocialMediaBar /> */}
       </div>
     </ToastProvider>
   );
