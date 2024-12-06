@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
+import IndustryApplications from './components/IndustryApplications';
 import Mission from './components/Mission';
 import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
@@ -45,6 +46,7 @@ function App() {
         <main className="pt-20"> {/* Added padding-top to account for fixed header */}
           <Hero />
           <Features />
+          <IndustryApplications />
           <Mission />
           <Testimonials />
           <Contact />

@@ -31,32 +31,32 @@ const Features = () => {
     {
       icon: Brain,
       title: "AI-Powered Analytics",
-      description: "Advanced machine learning algorithms that analyze your data in real-time, providing actionable insights and predictive analytics."
+      description: "Harness AI-driven analytics to decode complex industrial data in real-time, enabling predictive maintenance, anomaly detection, and operational excellence."
     },
     {
       icon: Network,
       title: "IoT Integration",
-      description: "Seamless connection and management of IoT devices, enabling smart automation and real-time monitoring of your operations."
+      description: "Enable seamless IoT device integration for real-time monitoring, intelligent automation, and centralized operational visibility across diverse production environments."
     },
     {
       icon: Database,
       title: "Data Processing",
-      description: "High-performance data processing pipeline that handles massive amounts of data with speed and precision."
+      description: "Accelerate decision-making with a robust data pipeline that processes vast datasets swiftly, ensuring precise and actionable insights."
     },
     {
       icon: Lock,
       title: "Security First",
-      description: "Enterprise-grade security measures ensuring your data and operations are protected with state-of-the-art encryption."
+      description: "Ensure industrial-grade security with advanced encryption protocols and proactive threat detection, safeguarding your data at every step."
     },
     {
       icon: BarChart,
       title: "Business Intelligence",
-      description: "Transform raw data into meaningful business insights with our advanced visualization and reporting tools."
+      description: "Convert operational data into actionable intelligence using sophisticated visualization tools tailored for enhanced strategic planning."
     },
     {
       icon: Zap,
       title: "Real-time Operations",
-      description: "Monitor and manage your operations in real-time with instant alerts and automated response systems."
+      description: "Manage industrial workflows in real-time with instant notifications, automated system responses, and actionable insights."
     }
   ];
 

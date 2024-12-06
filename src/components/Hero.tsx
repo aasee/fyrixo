@@ -33,16 +33,16 @@ const Hero = () => {
             <AnimateOnView delay={0.1} className="space-y-6">
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                 <span className="bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
-                  Transform Your Business
+                  Revolutionize Industrial Operations
                 </span>
                 <br />
                 <span className="text-gray-800">
-                  with AI & IoT Solutions
+                  with Intelligent IoT and AI Solutions
                 </span>
               </h1>
               
               <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Unlock the power of intelligent automation and data-driven insights with our cutting-edge platform. Experience seamless integration of AI and IoT technologies.
+              Leverage our state-of-the-art IoT platform to unify your industrial data streams into a single, real-time dashboard. Empower your decision-making with predictive insights and automation powered by advanced AI and Machine Learning, tailored for industrial efficiency.
               </p>
             </AnimateOnView>
 

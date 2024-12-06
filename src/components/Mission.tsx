@@ -52,17 +52,17 @@ const Mission = () => {
     {
       icon: Target,
       title: "Our Mission",
-      description: "To empower businesses with cutting-edge AI and IoT solutions that drive innovation and sustainable growth in the digital age."
+      description: "To empower industries with transformative IoT, AI, and ML technologies, driving innovation, sustainability, and operational excellence in the evolving digital landscape."
     },
     {
       icon: Zap,
       title: "Our Vision",
-      description: "To be the leading force in digital transformation, creating intelligent solutions that reshape industries and improve lives globally."
+      description: "To lead the industrial transformation journey by delivering intelligent, data-driven solutions that redefine business models and enhance global operational efficiency."
     },
     {
       icon: Globe,
       title: "Our Impact",
-      description: "Delivering measurable results through smart automation, data-driven insights, and seamless integration of advanced technologies."
+      description: "Creating meaningful industrial impact by combining smart automation, predictive intelligence, and seamless IoT-AI integration to enhance productivity and profitability."
     }
   ];
 
@@ -73,15 +73,15 @@ const Mission = () => {
     },
     {
       year: "2022",
-      description: "Expanded capabilities by integrating advanced AI/ML-driven data analytics for deeper insights."
+      description: "AI/ML Integration - Integrated AI and Machine Learning to revolutionize data analytics, enabling real-time insights and predictive solutions for industries."
     },
     {
       year: "2023",
-      description: "Pioneered the adoption of Generative AI solutions, revolutionizing data-driven innovation."
+      description: "Generative AI - Leveraged Generative AI to redefine industrial innovation, enabling smarter automation and enhanced operational efficiencies."
     },
     {
       year: "2024",
-      description: "Developing a cutting-edge platform that seamlessly integrates IoT and AI technologies to shape the future of smart solutions."
+      description: "Cutting-Edge Platform - Stepping into the next-generation platform uniting IoT, AI, and ML for a holistic approach to industrial management, driving smarter, more connected solutions."
     }
   ];
 
