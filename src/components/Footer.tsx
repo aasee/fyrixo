@@ -98,10 +98,10 @@ const Footer = () => {
                 <Mail className="w-5 h-5" />
                 <span>contact@fyrixo.com</span>
               </li>
-              <li className="flex items-center space-x-3 text-gray-400">
+              {/* <li className="flex items-center space-x-3 text-gray-400">
                 <Phone className="w-5 h-5" />
-                <span>+91-9652246476</span>
-              </li>
+                <span>+91-9999999999</span>
+              </li> */}
               <li className="flex items-center space-x-3 text-gray-400">
                 <MapPin className="w-5 h-5" />
                 <span>Chennai, India</span>
