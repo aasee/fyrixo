@@ -1,4 +1,4 @@
-# Fyrixo
+# Fyrixo Technologies
 
 A modern web application built with React and TypeScript, featuring a sleek and responsive design powered by Tailwind CSS and enhanced with smooth animations using Framer Motion.
 

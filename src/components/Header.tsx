@@ -25,7 +25,7 @@ const Header = () => {
             <img src={import.meta.env.BASE_URL + 'logo.png'} alt="Fyrixo Logo" className="h-16 w-auto" />
             <div className="flex flex-col">
               <span className="text-2xl font-bold bg-gradient-to-r from-rose-700 to-purple-900 bg-clip-text text-transparent">
-                Fyrixo
+                Fyrixo Technologies
               </span>
               <span className="text-sm text-[#3B95B0]">Smart and Seamless</span>
             </div>

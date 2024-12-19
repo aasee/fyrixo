@@ -1,7 +1,7 @@
 {
   "hero": {
     "company": {
-      "name": "Fyrixo",
+      "name": "Fyrixo Technologies",
       "tagline": "Smart and Seamless"
     },
     "mainHeading": {
@@ -75,7 +75,7 @@
   "industryApplications": {
     "header": {
       "title": "Industry Applications: Revolutionizing Operations with IIoT",
-      "description": "At Fyrixo, we provide cutting-edge IIoT(Industrial IoT) solutions tailored to drive operational efficiency, reduce downtime, and optimize performance across various industries. Our platform integrates AI, machine learning, and real-time analytics to transform how businesses manage their processes."
+      "description": "At Fyrixo Technologies, we provide cutting-edge IIoT(Industrial IoT) solutions tailored to drive operational efficiency, reduce downtime, and optimize performance across various industries. Our platform integrates AI, machine learning, and real-time analytics to transform how businesses manage their processes."
     },
     "applications": [
       {
@@ -281,12 +281,12 @@
   },
   "footer": {
     "company": {
-      "name": "Fyrixo",
+      "name": "Fyrixo Technologies",
       "tagline": "Smart and Seamless",
       "description": "Transforming businesses with intelligent AI & IoT solutions.",
       "logo": {
         "src": "logo.png",
-        "alt": "Fyrixo"
+        "alt": "Fyrixo Technologies"
       },
       "social": {
         "linkedin": {

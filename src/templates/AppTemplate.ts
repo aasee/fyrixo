@@ -4,7 +4,7 @@ import { Factory, Cloud, LineChart, Bell, Cpu, Building2,
 
 export const heroContent = {
   company: {
-    name: "Fyrixo",
+    name: "Fyrixo Technologies",
     tagline: "Smart and Seamless"
   },
   mainHeading: {
@@ -41,7 +41,7 @@ export const heroContent = {
 export const industryApplicationsContent = {
   header: {
     title: "Industry Applications: Revolutionizing Operations with IIoT",
-    description: "At Fyrixo, we provide cutting-edge IIoT(Industrial IoT) solutions tailored to drive operational efficiency, reduce downtime, and optimize performance across various industries. Our platform integrates AI, machine learning, and real-time analytics to transform how businesses manage their processes."
+    description: "At Fyrixo Technologies, we provide cutting-edge IIoT(Industrial IoT) solutions tailored to drive operational efficiency, reduce downtime, and optimize performance across various industries. Our platform integrates AI, machine learning, and real-time analytics to transform how businesses manage their processes."
   },
   applications: [
     {
